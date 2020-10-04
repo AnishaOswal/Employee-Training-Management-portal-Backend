@@ -2,14 +2,28 @@ package com.infosys.employeeservice.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GenerationType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table
 public class Employee {
+	public Employee(int id,String first_name, String middle_name, String last_name,int dob,String city,int contact_number) {
+		  this.id = id;
+		  this.first_name = first_name;
+		  this.middle_name = middle_name;
+		  this.last_name = last_name;
+		  this.dob = dob;
+		  this.city=city;
+		  this.contact_number=contact_number;
+		  
+		 }
+		 
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column
 	private int id;
 	
@@ -86,5 +100,10 @@ public class Employee {
 	public void setContact_number(int contact_number) {
 		this.contact_number = contact_number;
 	}
+	@Override
+    public String toString() {
+		return "Employee [id=" + id + ", firstName=" + first_name + ", lastName=" + last_name + ", middleName=" + middle_name + ", dob=" +dob+",city=" + city +",contact_number=" + contact_number+
+	            "]";
+    }
 	
 }
